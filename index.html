@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="weather">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>"Weather"</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+
+  <body ng-controller="weatherCtrl">
+
+    <div class="container">
+      <div class="box">
+        <div class="row">
+          <h5 class="city">{{city}}</h5>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4" ng-if="currentIconPath">
+            <img class="current-icon" src="{{currentIconPath}}" alt="current conditions icon" />
+          </div>
+          <div class="col-xs-4">
+            <h1 class="current-temp">{{currentTemp}}&deg;</h1>
+            <h5 class="current-weather">{{currentWeather}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <h5 class="today">Today</h5>
+          </div>
+        </div>
+      </div>
+      <div class="forecast box">
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-2" ng-if="forecast24hr.iconUrl">
+            <img class="forecast-icon" src="{{forecast24hr.iconUrl}}" alt="24 hour forecast icon" />
+          </div>
+          <div class="col-xs-4">
+            <h5 class="forecast-day">{{forecast24hr.day}}</h5>
+          </div>
+          <div class="col-xs-3">
+            <h5 class="forecast-temp">{{forecast24hr.temp}}&deg;</h5>
+          </div>
+        </div>
+      </div>
+      <div class="forecast box">
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-2" ng-if="forecast48hr.iconUrl">
+            <img class="forecast-icon" src="{{forecast48hr.iconUrl}}" alt="48 hour forecast icon" />
+          </div>
+          <div class="col-xs-4">
+            <h5 class="forecast-day">{{forecast48hr.day}}</h5>
+          </div>
+          <div class="col-xs-3">
+            <h5 class="forecast-temp">{{forecast48hr.temp}}&deg;</h5>
+          </div>
+        </div>
+      </div>
+      <div class="forecast box">
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-2" ng-if="forecast72hr.iconUrl">
+            <img class="forecast-icon" src="{{forecast72hr.iconUrl}}" alt="72 hour forecast icon" />
+          </div>
+          <div class="col-xs-4">
+            <h5 class="forecast-day">{{forecast72hr.day}}</h5>
+          </div>
+          <div class="col-xs-3">
+            <h5 class="forecast-temp">{{forecast72hr.temp}}&deg;</h5>
+          </div>
+        </div>
+      </div>
+      <div class="zipcode-form">
+        <form class="form-horizontal" method="post">
+          <div class="form-group">
+            <div class="col-xs-3 col-xs-offset-1">
+              <label class="control-label" for="zipcocde">Zipcode</label>
+            </div>
+            <div class="col-xs-4">
+              <input class="form-control" type="text" name="zipcode" ng-model="zipcode">
+            </div>
+            <div class="col-xs-4">
+              <input type="button" class="btn btn-xs btn-default btn-block" ng-click="findWeather(zipcode)" value="Change">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          <small>Powered by Weather Underground</small>
+        </p>
+        <a href="http://www.wunderground.com/?apiref=72bfa69b525c029f">
+          <img class="logo" src="/assets/wundergroundLogo_4c_horz.png" alt="wunderground logo" />
+        </a>
+      </div>
+    </footer>
+
+  </body>
+</html>
